@@ -5,11 +5,11 @@ fclose(fileID);
 % Calculate the sum of each row. Humans tend to believe that it should be 
 % well distributed among the two numbers
 sumOfRows = sum(data,2);
-counter = 1;
+counter_dist = 1;
 for i = 1:length(sumOfRows)
     if sumOfRows(i) > 110 || sumOfRows(i) < 90
-        indices(counter) = i;
-        counter = counter + 1;
+        indices(counter_dist) = i;
+        counter_dist = counter_dist + 1;
     end
 end
 
@@ -34,13 +34,19 @@ for r = 1:size(data,1)
     end
 end
 
+counter_long = 1;
+counter_both = 1;
 nrOfLongSequences = 0;
 nrOfDefinitiveRobots = 0;
 for i = 1:length(max)
     if max(i) > 7
         nrOfLongSequences = nrOfLongSequences+1;
+        long(counter_long) = i;
+        counter_long = counter_long+1;
         for j = 1:length(indices)
             if i == indices(j)
+                both(counter_both) = i;
+                counter_both = counter_both +1;
                 nrOfDefinitiveRobots = nrOfDefinitiveRobots +1;
             end
         end

@@ -5,16 +5,13 @@ fclose(fileID);
 % Calculate the sum of each row. Humans tend to believe that it should be 
 % well distributed among the two numbers
 sumOfRows = sum(data,2);
-
-
 counter = 1;
 for i = 1:length(sumOfRows)
-    if sumOfRows(i) > 115 || sumOfRows(i) < 85
-        indices[
+    if sumOfRows(i) > 110 || sumOfRows(i) < 90
+        indices(counter) = i;
+        counter = counter + 1;
     end
 end
-
-
 
 % Calculate the number of maximum sequence of the same number in each row.
 % Humans believe that the same number should not happen too often after
@@ -36,13 +33,19 @@ for r = 1:size(data,1)
         end
     end
 end
-
-counter = 0;
+counterer = 1;
+nrOfLongSequences = 0;
+nrOfDefinitiveRobots = 0;
 for i = 1:length(max)
     if max(i) > 7
-        counter = counter+1;
+        nrOfLongSequences = nrOfLongSequences+1;
+        long(counterer) = i;
+        counterer = counterer+1;
+        for j = 1:length(indices)
+            if i == indices(j)
+                
+                nrOfDefinitiveRobots = nrOfDefinitiveRobots +1;
+            end
+        end
     end
 end
-
-max
-counter

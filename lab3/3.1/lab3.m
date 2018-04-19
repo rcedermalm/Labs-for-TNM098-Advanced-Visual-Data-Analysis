@@ -48,6 +48,10 @@ for i=1:nrOfImages-1
     diffBStd(index) = [];
 end
 
+[~, index] = max(points);
+
+index
+
 
 
 
